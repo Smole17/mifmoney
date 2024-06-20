@@ -8,5 +8,6 @@
   "mifmoney.add_order": "Добавить товар",
   "mifmoney.add_category": "Добавить категорию",
   "mifmoney.save_button": "Сохранить",
-  "mifmoney.delete_button": "Удалить"
+  "mifmoney.delete_button": "Удалить",
+  "mifmoney.balance": "Баланс:"
 }

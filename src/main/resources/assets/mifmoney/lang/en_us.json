@@ -8,5 +8,6 @@
   "mifmoney.add_order": "Add order",
   "mifmoney.add_category": "Add category",
   "mifmoney.save_button": "Save",
-  "mifmoney.delete_button": "Delete"
+  "mifmoney.delete_button": "Delete",
+  "mifmoney.balance": "Balance:"
 }

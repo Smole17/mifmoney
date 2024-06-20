@@ -62,7 +62,6 @@ public class OrderPanel extends Panel {
             }
         };
 
-        scrollBar.setCanAlwaysScroll(true);
         scrollBar.setSize(10, 155);
         scrollBar.setMaxValue(1);
 

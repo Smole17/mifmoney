@@ -26,7 +26,7 @@ public class OpenShopButton extends TabButton {
         val currency = ModComponents.CURRENCY.get(MinecraftClient.getInstance().player).getValue();
 
         list.add(this.getTitle());
-        list.add(FormatUtil.format(currency));
+        list.add(FormatUtil.formatMoney(currency));
     }
 
     public void onClicked(MouseButton button) {

@@ -63,7 +63,8 @@ public class ItemOrderButton extends Button {
         drawBackground(matrixStack, theme, x, y, w, h);
 
         theme.drawString(matrixStack, getTitle(), x + 5, y + 2, Theme.SHADOW);
-        theme.drawString(matrixStack, FormatUtil.format(component.getPrice()), x + 130 - theme.getStringWidth("" + component.getPrice()), y + 11, Theme.SHADOW);
+
+        FormatUtil.drawFormattedMoney(component.getPrice(), matrixStack, x + 80, y + 7, w - 80, h - 12, 16);
 
         icon.draw(matrixStack, x - 15, y + 10, w - 80, h - 12);
     }

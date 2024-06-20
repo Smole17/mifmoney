@@ -9,6 +9,7 @@ import lombok.Setter;
 import lombok.val;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.text.Text;
 import ru.smole.mifmoney.gui.shop.button.category.CategoryButton;
 import ru.smole.mifmoney.gui.shop.panel.category.CategoryPanel;
 import ru.smole.mifmoney.gui.shop.panel.order.OrderPanel;
@@ -41,7 +42,12 @@ public class ShopScreen extends BaseScreen {
         super.drawBackground(matrixStack, theme, x, y, 176, 166);
 
         val currency = ModComponents.CURRENCY.get(MinecraftClient.getInstance().player).getValue();
-        theme.drawString(matrixStack, FormatUtil.format(currency), x + (width - theme.getStringWidth("" + currency)) - 15, y - 10, Theme.SHADOW);
+
+        FormatUtil.drawFormattedMoney(currency, matrixStack, x + 125, y - 16, 16, 16, 16);
+
+        val mifMoneyBalanceText = Text.translatable("mifmoney.balance");
+
+        theme.drawString(matrixStack, mifMoneyBalanceText, x + (width - theme.getStringWidth(mifMoneyBalanceText)) - 50, y - 10, Theme.SHADOW);
 
         if (currentCategoryButton == null) return;
 
