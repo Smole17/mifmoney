@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "mifmoney",
+  "version": "${version}",
+  "name": "MIFMoney",
+  "description": "",
+  "authors": [],
+  "contact": {
+    "repo": ""
+  },
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "ru.smole.mifmoney.MIFMoney"
+    ]
+  },
+  "mixins": [
+    "mifmoney.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}",
+    "ftblibrary": ">=${ftb_library_version}",
+    "ftbquests": ">=${ftb_quests_version}",
+    "kubejs": ">=${kubejs_version}",
+    "owo": ">=${owo_version}",
+    "numismatic-overhaul": ">=${numismatic_overhaul_version}"
+  }
+}

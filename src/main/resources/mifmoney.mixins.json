@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "ru.smole.mifmoney.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "gui.quests.ChapterPanelMixin",
+    "gui.quests.OtherButtonsPanelTopMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
