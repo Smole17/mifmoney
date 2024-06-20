@@ -3,7 +3,6 @@ package ru.smole.mifmoney.gui.shop.panel.order;
 import dev.ftb.mods.ftblibrary.ui.*;
 import dev.ftb.mods.ftbquests.FTBQuests;
 import lombok.Getter;
-import lombok.val;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
 import ru.smole.mifmoney.component.category.CategoryComponent;

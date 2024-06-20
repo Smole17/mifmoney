@@ -1,13 +1,10 @@
 package ru.smole.mifmoney.gui.shop.screen.edit;
 
-import dev.architectury.utils.EnvExecutor;
 import dev.ftb.mods.ftblibrary.config.ui.SelectItemStackScreen;
 import dev.ftb.mods.ftblibrary.icon.Color4I;
 import dev.ftb.mods.ftblibrary.ui.*;
 import dev.ftb.mods.ftblibrary.ui.input.MouseButton;
-import dev.ftb.mods.ftbquests.client.ClientQuestFile;
 import dev.ftb.mods.ftbquests.client.ConfigIconItemStack;
-import dev.ftb.mods.ftbquests.quest.ServerQuestFile;
 import lombok.val;
 import net.minecraft.text.Text;
 import org.apache.commons.lang3.math.NumberUtils;

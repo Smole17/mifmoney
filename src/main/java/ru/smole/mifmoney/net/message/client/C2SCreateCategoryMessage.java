@@ -5,7 +5,6 @@ import dev.architectury.networking.simple.BaseC2SMessage;
 import dev.architectury.networking.simple.MessageType;
 import lombok.RequiredArgsConstructor;
 import net.minecraft.network.PacketByteBuf;
-import net.minecraft.server.network.ServerPlayerEntity;
 import ru.smole.mifmoney.MIFMoney;
 import ru.smole.mifmoney.component.category.CategoryComponent;
 import ru.smole.mifmoney.net.MIFMoneyCommonNetwork;

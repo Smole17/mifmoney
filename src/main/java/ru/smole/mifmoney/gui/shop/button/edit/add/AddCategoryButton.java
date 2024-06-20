@@ -7,7 +7,6 @@ import dev.ftb.mods.ftbquests.quest.theme.property.ThemeProperties;
 import lombok.val;
 import net.minecraft.item.Items;
 import net.minecraft.text.Text;
-import ru.smole.mifmoney.MIFMoney;
 import ru.smole.mifmoney.component.category.CategoryComponent;
 import ru.smole.mifmoney.gui.shop.panel.category.CategoryPanel;
 import ru.smole.mifmoney.gui.shop.screen.edit.EditCategoryScreen;

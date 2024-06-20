@@ -7,7 +7,6 @@ import dev.ftb.mods.ftblibrary.ui.input.MouseButton;
 import dev.ftb.mods.ftbquests.client.ConfigIconItemStack;
 import lombok.val;
 import net.minecraft.text.Text;
-import ru.smole.mifmoney.MIFMoney;
 import ru.smole.mifmoney.gui.shop.button.category.CategoryButton;
 import ru.smole.mifmoney.net.message.client.C2SDeleteCategoryMessage;
 import ru.smole.mifmoney.net.message.client.C2SEditCategoryMessage;

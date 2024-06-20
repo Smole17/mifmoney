@@ -13,10 +13,10 @@ import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
+import ru.smole.mifmoney.component.order.ItemOrderComponent;
 import ru.smole.mifmoney.gui.shop.screen.ShopScreen;
 import ru.smole.mifmoney.gui.shop.screen.edit.EditItemOrderScreen;
 import ru.smole.mifmoney.net.message.client.C2SBuyItemMessage;
-import ru.smole.mifmoney.component.order.ItemOrderComponent;
 import ru.smole.mifmoney.util.FormatUtil;
 
 @Getter

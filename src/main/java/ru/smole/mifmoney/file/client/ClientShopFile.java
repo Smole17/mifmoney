@@ -2,7 +2,6 @@ package ru.smole.mifmoney.file.client;
 
 import lombok.Getter;
 import lombok.Setter;
-import net.minecraft.client.MinecraftClient;
 import ru.smole.mifmoney.file.ShopFile;
 import ru.smole.mifmoney.gui.shop.screen.ShopScreen;
 

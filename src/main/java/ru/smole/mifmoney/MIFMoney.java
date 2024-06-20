@@ -7,10 +7,7 @@ import dev.ftb.mods.ftbteams.event.TeamEvent;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.RegistryKey;
 import ru.smole.mifmoney.file.server.ServerShopFile;
-import ru.smole.mifmoney.net.MIFMoneyCommonNetwork;
 import ru.smole.mifmoney.net.message.server.S2CSyncShopMessage;
 
 public class MIFMoney implements ModInitializer {
