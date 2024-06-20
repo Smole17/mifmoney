@@ -9,7 +9,6 @@ import lombok.Setter;
 import lombok.val;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
-import ru.smole.mifmoney.MIFMoney;
 import ru.smole.mifmoney.gui.shop.button.category.CategoryButton;
 import ru.smole.mifmoney.gui.shop.panel.category.CategoryPanel;
 import ru.smole.mifmoney.gui.shop.panel.order.OrderPanel;
