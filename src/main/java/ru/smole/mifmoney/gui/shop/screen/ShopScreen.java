@@ -3,6 +3,7 @@ package ru.smole.mifmoney.gui.shop.screen;
 import com.glisco.numismaticoverhaul.ModComponents;
 import dev.ftb.mods.ftblibrary.ui.BaseScreen;
 import dev.ftb.mods.ftblibrary.ui.Theme;
+import dev.ftb.mods.ftblibrary.ui.input.Key;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.val;
@@ -51,9 +52,8 @@ public class ShopScreen extends BaseScreen {
     }
 
     @Override
-    public void onClosed() {
-        super.onClosed();
-
+    public boolean onClosedByKey(Key key) {
         EDITING_STATE = false;
+        return super.onClosedByKey(key);
     }
 }
