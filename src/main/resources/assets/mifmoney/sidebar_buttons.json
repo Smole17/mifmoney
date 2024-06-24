@@ -1,0 +1,12 @@
+{
+  "shop": {
+    "group": "ftblibrary:info",
+    "icon": "ftbquests:textures/gui/shop.png",
+    "x": 1220,
+    "click": "custom:mifmoney:open_shop_gui",
+    "required_server_mods": [
+      "mifmoney"
+    ],
+    "custom_text": true
+  }
+}

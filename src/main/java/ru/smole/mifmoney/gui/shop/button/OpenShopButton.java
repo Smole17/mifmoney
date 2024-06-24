@@ -15,7 +15,7 @@ import ru.smole.mifmoney.util.FormatUtil;
 
 public class OpenShopButton extends TabButton {
 
-    private final static Text SHOP_TEXT = Text.translatable("mifmoney.shop");
+    private final static Text SHOP_TEXT = Text.translatable("sidebar_button.mifmoney.shop");
     private final static Icon SHOP_ICON = ThemeProperties.SHOP_ICON.get();
 
     public OpenShopButton(Panel panel) {
