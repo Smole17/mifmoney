@@ -8,6 +8,7 @@ import dev.ftb.mods.ftbquests.client.ConfigIconItemStack;
 import lombok.val;
 import net.minecraft.text.Text;
 import org.apache.commons.lang3.math.NumberUtils;
+import ru.smole.mifmoney.component.order.item.ItemOrderComponent;
 import ru.smole.mifmoney.gui.shop.button.order.ItemOrderButton;
 import ru.smole.mifmoney.net.message.client.C2SDeleteItemOrderMessage;
 import ru.smole.mifmoney.net.message.client.C2SEditItemOrderMessage;
@@ -29,6 +30,7 @@ public class EditItemOrderScreen extends BaseScreen {
             public void onClicked(MouseButton mouseButton) {
                 new C2SEditItemOrderMessage(orderButton.getCategoryId(), orderButton.getComponent()).sendToServer();
 
+                playClickSound();
                 closeGui();
             }
         };
@@ -37,6 +39,7 @@ public class EditItemOrderScreen extends BaseScreen {
             public void onClicked(MouseButton mouseButton) {
                 new C2SDeleteItemOrderMessage(orderButton.getCategoryId(), orderButton.getComponent()).sendToServer();
 
+                playClickSound();
                 closeGui();
             }
         };
@@ -56,7 +59,7 @@ public class EditItemOrderScreen extends BaseScreen {
 
         @Override
         public void addWidgets() {
-            val component = orderButton.getComponent();
+            val component = (ItemOrderComponent) orderButton.getComponent();
 
             val mainPanel = new BlankPanel(this) {
                 @Override
@@ -81,24 +84,19 @@ public class EditItemOrderScreen extends BaseScreen {
 
                             add(iconButton);
 
-                            val priceBox = new TextBox(this) {
+                            val nameBox = new TextBox(this) {
                                 @Override
                                 public void onTextChanged() {
-                                    component.setPrice(Long.parseLong(getText()));
-                                }
-
-                                @Override
-                                public boolean isValid(String txt) {
-                                    return NumberUtils.isParsable(txt);
+                                    component.setName(getText());
                                 }
                             };
 
-                            priceBox.setText("" + component.getPrice());
-                            priceBox.ghostText = "Price";
+                            nameBox.setText(component.getName());
+                            nameBox.ghostText = "Name";
 
-                            priceBox.setSize(100, 15);
+                            nameBox.setSize(100, 15);
 
-                            add(priceBox);
+                            add(nameBox);
                         }
 
                         @Override
@@ -109,6 +107,25 @@ public class EditItemOrderScreen extends BaseScreen {
                     };
 
                     add(componentPanel);
+
+                    val priceBoxId = new TextBox(this) {
+                        @Override
+                        public void onTextChanged() {
+                            component.setPrice(Long.parseLong(getText()));
+                        }
+
+                        @Override
+                        public boolean isValid(String txt) {
+                            return NumberUtils.isParsable(txt);
+                        }
+                    };
+
+                    priceBoxId.setText("" + component.getPrice());
+                    priceBoxId.ghostText = "Price";
+
+                    priceBoxId.setPosAndSize(posX + 16, 0, 100, 15);
+
+                    add(priceBoxId);
 
                     val questIdBox = new TextBox(this) {
                         @Override
@@ -126,6 +143,40 @@ public class EditItemOrderScreen extends BaseScreen {
                     questIdBox.setPosAndSize(posX + 16, 0, 100, 15);
 
                     add(questIdBox);
+
+                    val rewardTableIdBox = new TextBox(this) {
+                        @Override
+                        public void onTextChanged() {
+                            component.setRewardTableId(getText());
+                            orderButton.update();
+                        }
+                    };
+
+                    val rewardTableId = component.getRewardTableId();
+
+                    rewardTableIdBox.setText(rewardTableId == null ? "" : rewardTableId);
+                    rewardTableIdBox.ghostText = "Reward table id";
+
+                    rewardTableIdBox.setPosAndSize(posX + 16, 0, 100, 15);
+
+                    add(rewardTableIdBox);
+
+                    val bulkRewardTableIdBox = new TextBox(this) {
+                        @Override
+                        public void onTextChanged() {
+                            component.setBulkRewardTableId(getText());
+                            orderButton.update();
+                        }
+                    };
+
+                    val bulkRewardTableId = component.getBulkRewardTableId();
+
+                    bulkRewardTableIdBox.setText(bulkRewardTableId == null ? "" : bulkRewardTableId);
+                    bulkRewardTableIdBox.ghostText = "Reward table id";
+
+                    bulkRewardTableIdBox.setPosAndSize(posX + 16, 0, 100, 15);
+
+                    add(bulkRewardTableIdBox);
                 }
 
                 @Override

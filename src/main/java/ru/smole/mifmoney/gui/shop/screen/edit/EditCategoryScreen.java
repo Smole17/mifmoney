@@ -28,6 +28,7 @@ public class EditCategoryScreen extends EditScreen {
             public void onClicked(MouseButton mouseButton) {
                 new C2SEditCategoryMessage(categoryButton.getComponent()).sendToServer();
 
+                playClickSound();
                 closeGui();
             }
         };
@@ -37,6 +38,7 @@ public class EditCategoryScreen extends EditScreen {
             public void onClicked(MouseButton mouseButton) {
                 new C2SDeleteCategoryMessage(categoryButton.getComponent()).sendToServer();
 
+                playClickSound();
                 closeGui();
             }
         };

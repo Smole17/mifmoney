@@ -26,6 +26,8 @@ public class CategoryButton extends Button {
 
     @Override
     public void onClicked(MouseButton mouseButton) {
+        playClickSound();
+
         if (ShopScreen.EDITING_STATE) {
             new EditCategoryScreen(this).openGui();
             return;

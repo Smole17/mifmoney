@@ -3,6 +3,7 @@ package ru.smole.mifmoney.gui.shop.panel.order;
 import dev.ftb.mods.ftblibrary.ui.*;
 import dev.ftb.mods.ftbquests.FTBQuests;
 import lombok.Getter;
+import lombok.val;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
 import ru.smole.mifmoney.component.category.CategoryComponent;
@@ -31,8 +32,9 @@ public class OrderPanel extends Panel {
                         .stream()
                         .map(component -> component.toButton(this, categoryComponent.getId()))
                         .filter(button -> {
-                                    if (button.getQuest() != null)
-                                        return ShopScreen.EDITING_STATE || FTBQuests.PROXY.getClientPlayerData().isCompleted(button.getQuest());
+                                    val quest = button.getComponent().getQuest();
+                                    if (quest != null)
+                                        return ShopScreen.EDITING_STATE || FTBQuests.PROXY.getClientPlayerData().isCompleted(quest);
 
                                     return true;
                                 }

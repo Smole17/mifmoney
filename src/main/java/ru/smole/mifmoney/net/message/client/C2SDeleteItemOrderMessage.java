@@ -6,7 +6,7 @@ import dev.architectury.networking.simple.MessageType;
 import lombok.RequiredArgsConstructor;
 import net.minecraft.network.PacketByteBuf;
 import ru.smole.mifmoney.MIFMoney;
-import ru.smole.mifmoney.component.order.ItemOrderComponent;
+import ru.smole.mifmoney.component.order.item.ItemOrderComponent;
 import ru.smole.mifmoney.net.MIFMoneyCommonNetwork;
 import ru.smole.mifmoney.net.message.server.S2CSyncShopMessage;
 

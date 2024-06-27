@@ -12,7 +12,8 @@ import net.minecraft.nbt.NbtList;
 import net.minecraft.network.PacketByteBuf;
 import ru.smole.mifmoney.component.NBTDrawer;
 import ru.smole.mifmoney.component.NetDrawer;
-import ru.smole.mifmoney.component.order.ItemOrderComponent;
+import ru.smole.mifmoney.component.order.OrderComponent;
+import ru.smole.mifmoney.component.order.item.ItemOrderComponent;
 import ru.smole.mifmoney.gui.shop.button.category.CategoryButton;
 import ru.smole.mifmoney.gui.shop.panel.category.CategoryPanel;
 
@@ -31,7 +32,7 @@ public class CategoryComponent implements NBTDrawer, NetDrawer {
     private String id = UUID.randomUUID().toString();
     private String name = id;
     private ItemStack itemStack;
-    private List<ItemOrderComponent> orderComponents;
+    private List<OrderComponent> orderComponents;
 
     @Override
     public void writeData(NbtCompound compound) {
@@ -40,10 +41,10 @@ public class CategoryComponent implements NBTDrawer, NetDrawer {
 
         val orderList = new NbtList();
 
-        orderComponents.forEach(itemOrderComponent -> {
+        orderComponents.forEach(orderComponent -> {
             val snbt = new SNBTCompoundTag();
 
-            itemOrderComponent.writeData(snbt);
+            orderComponent.writeData(snbt);
 
             orderList.add(snbt);
         });

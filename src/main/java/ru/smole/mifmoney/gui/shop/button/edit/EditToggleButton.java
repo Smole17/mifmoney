@@ -22,6 +22,7 @@ public class EditToggleButton extends Button {
     public void onClicked(MouseButton mouseButton) {
         ShopScreen.EDITING_STATE = !ShopScreen.EDITING_STATE;
 
+        playClickSound();
         parent.refreshWidgets();
         parent.parent.refreshWidgets();
     }

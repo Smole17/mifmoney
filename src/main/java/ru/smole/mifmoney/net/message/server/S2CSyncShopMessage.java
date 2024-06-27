@@ -3,14 +3,9 @@ package ru.smole.mifmoney.net.message.server;
 import dev.architectury.networking.NetworkManager;
 import dev.architectury.networking.simple.BaseS2CMessage;
 import dev.architectury.networking.simple.MessageType;
-import dev.ftb.mods.ftblibrary.util.ClientUtils;
-import lombok.val;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.network.PacketByteBuf;
 import ru.smole.mifmoney.MIFMoney;
-import ru.smole.mifmoney.MIFMoneyClient;
 import ru.smole.mifmoney.file.ShopFile;
-import ru.smole.mifmoney.gui.shop.screen.ShopScreen;
 import ru.smole.mifmoney.net.MIFMoneyCommonNetwork;
 
 public class S2CSyncShopMessage extends BaseS2CMessage {

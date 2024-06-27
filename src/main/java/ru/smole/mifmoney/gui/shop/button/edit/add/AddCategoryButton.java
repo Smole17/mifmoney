@@ -35,6 +35,7 @@ public class AddCategoryButton extends Button {
                 .orderComponents(new ArrayList<>())
                 .build();
 
+        playClickSound();
         new EditCategoryScreen(categoryComponent.toButton(categoryPanel)).openGui();
 
         new C2SCreateCategoryMessage(categoryComponent).sendToServer();
