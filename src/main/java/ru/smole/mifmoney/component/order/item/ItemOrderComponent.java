@@ -3,6 +3,7 @@ package ru.smole.mifmoney.component.order.item;
 import com.glisco.numismaticoverhaul.ModComponents;
 import dev.architectury.hooks.item.ItemStackHooks;
 import dev.ftb.mods.ftblibrary.ui.Panel;
+import dev.ftb.mods.ftbquests.client.ClientQuestFile;
 import dev.ftb.mods.ftbquests.quest.ServerQuestFile;
 import dev.ftb.mods.ftbquests.quest.loot.RewardTable;
 import dev.ftb.mods.ftbquests.util.NBTUtils;
@@ -26,7 +27,7 @@ public class ItemOrderComponent extends OrderComponent {
 
     public static RewardTable getRewardTable(String rewardTableId) {
         if (rewardTableId == null) return null;
-        return ServerQuestFile.INSTANCE.getRewardTable(RewardTable.parseCodeString(rewardTableId));
+        return ClientQuestFile.INSTANCE.getRewardTable(RewardTable.parseCodeString(rewardTableId));
     }
 
     private ItemStack itemStack;
