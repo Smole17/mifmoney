@@ -36,7 +36,7 @@ public class S2CBuyItemResponseMessage extends BaseS2CMessage {
         val choiceReward = new ChoiceReward(null) {
             @Override
             public RewardTable getTable() {
-                return ItemOrderComponent.getRewardTable(rewardTableId);
+                return ItemOrderComponent.getRewardTable(rewardTableId, true);
             }
         };
         choiceReward.id = -1;

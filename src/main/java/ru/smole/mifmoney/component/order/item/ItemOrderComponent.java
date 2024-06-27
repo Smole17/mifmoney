@@ -25,9 +25,9 @@ import ru.smole.mifmoney.net.message.server.S2CBuyItemResponseMessage;
 @SuperBuilder
 public class ItemOrderComponent extends OrderComponent {
 
-    public static RewardTable getRewardTable(String rewardTableId) {
+    public static RewardTable getRewardTable(String rewardTableId, boolean isClient) {
         if (rewardTableId == null) return null;
-        return ClientQuestFile.INSTANCE.getRewardTable(RewardTable.parseCodeString(rewardTableId));
+        return (isClient ? ClientQuestFile.INSTANCE : ServerQuestFile.INSTANCE).getRewardTable(RewardTable.parseCodeString(rewardTableId));
     }
 
     private ItemStack itemStack;
@@ -91,7 +91,7 @@ public class ItemOrderComponent extends OrderComponent {
         if (currencyComponent.getValue() < modifiedPrice) return;
 
         val currentRewardTableId = isBulk ? bulkRewardTableId : rewardTableId;
-        val rewardTable = getRewardTable(currentRewardTableId);
+        val rewardTable = getRewardTable(currentRewardTableId, false);
 
         currencyComponent.modify(-modifiedPrice);
 
