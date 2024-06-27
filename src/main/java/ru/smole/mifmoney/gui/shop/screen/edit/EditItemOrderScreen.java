@@ -172,7 +172,7 @@ public class EditItemOrderScreen extends BaseScreen {
                     val bulkRewardTableId = component.getBulkRewardTableId();
 
                     bulkRewardTableIdBox.setText(bulkRewardTableId == null ? "" : bulkRewardTableId);
-                    bulkRewardTableIdBox.ghostText = "Reward table id";
+                    bulkRewardTableIdBox.ghostText = "Bulk reward table id";
 
                     bulkRewardTableIdBox.setPosAndSize(posX + 16, 0, 100, 15);
 
@@ -182,7 +182,7 @@ public class EditItemOrderScreen extends BaseScreen {
                 @Override
                 public void alignWidgets() {
                     align(WidgetLayout.VERTICAL);
-                    setPosAndSize(25, 0, 200, 70);
+                    setPosAndSize(25, 0, 200, 90);
                 }
             };
 

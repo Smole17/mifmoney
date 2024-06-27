@@ -1,6 +1,7 @@
 package ru.smole.mifmoney.component.order.item;
 
 import com.glisco.numismaticoverhaul.ModComponents;
+import dev.architectury.hooks.item.ItemStackHooks;
 import dev.ftb.mods.ftblibrary.ui.Panel;
 import dev.ftb.mods.ftbquests.quest.ServerQuestFile;
 import dev.ftb.mods.ftbquests.quest.loot.RewardTable;
@@ -91,9 +92,12 @@ public class ItemOrderComponent extends OrderComponent {
         val currentRewardTableId = isBulk ? bulkRewardTableId : rewardTableId;
         val rewardTable = getRewardTable(currentRewardTableId);
 
-        if (rewardTable == null) return;
-
         currencyComponent.modify(-modifiedPrice);
+
+        if (rewardTable == null) {
+            ItemStackHooks.giveItem(player, itemStack.kjs$withCount(itemStack.getCount() * modifier));
+            return;
+        }
 
         new S2CBuyItemResponseMessage(currentRewardTableId).sendTo(player);
     }
