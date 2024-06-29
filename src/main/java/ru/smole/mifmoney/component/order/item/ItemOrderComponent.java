@@ -82,6 +82,11 @@ public class ItemOrderComponent extends OrderComponent {
         this.bulkRewardTableId = itemOrderComponent.bulkRewardTableId;
     }
 
+    @Override
+    public String getName() {
+        return name == null || name.isEmpty() ? itemStack.getName().getString() : super.getName();
+    }
+
     public void give(boolean isBulk, ServerPlayerEntity player) {
         val modifier = isBulk ? 10 : 1;
 

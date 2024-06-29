@@ -47,7 +47,7 @@ public class ShopScreen extends BaseScreen {
 
         val mifMoneyBalanceText = Text.translatable("mifmoney.balance");
 
-        theme.drawString(matrixStack, mifMoneyBalanceText, x + (width - theme.getStringWidth(mifMoneyBalanceText)) - 50, y - 10, Theme.SHADOW);
+        theme.drawString(matrixStack, mifMoneyBalanceText, x + (width - theme.getStringWidth(mifMoneyBalanceText)) - 52, y - 10, Theme.SHADOW);
 
         if (currentCategoryButton == null) return;
 

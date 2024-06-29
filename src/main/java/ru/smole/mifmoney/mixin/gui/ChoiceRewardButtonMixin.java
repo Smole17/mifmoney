@@ -19,10 +19,13 @@ import ru.smole.mifmoney.net.message.client.C2SGiveItemMessage;
 @Mixin(targets = "dev.ftb.mods.ftbquests.gui.SelectChoiceRewardScreen$ChoiceRewardButton")
 public abstract class ChoiceRewardButtonMixin extends SimpleTextButton {
 
-    @Shadow @Final
+    @Shadow
+    @Final
     SelectChoiceRewardScreen this$0;
 
-    @Shadow @Final private WeightedReward weightedReward;
+    @Shadow
+    @Final
+    private WeightedReward weightedReward;
 
     public ChoiceRewardButtonMixin(Panel panel, Text txt, Icon icon) {
         super(panel, txt, icon);
@@ -30,23 +33,23 @@ public abstract class ChoiceRewardButtonMixin extends SimpleTextButton {
 
     @Inject(at = @At("HEAD"), method = "onClicked", remap = false, cancellable = true)
     public void onClicked(MouseButton button, CallbackInfo ci) {
-        playClickSound();
 
         val choiceReward = ((SelectChoiceRewardScreenAccessor) this$0).getChoiceReward();
 
-        if (choiceReward.id == -1) {
-            val table = choiceReward.getTable();
+        if (choiceReward.id != -1) return;
+        playClickSound();
 
-            if (table == null) {
-                closeGui();
-                ci.cancel();
-                return;
-            }
+        val table = choiceReward.getTable();
 
-            new C2SGiveItemMessage(table.rewards.indexOf(this.weightedReward), table).sendToServer();
-            playClickSound();
+        if (table == null) {
             closeGui();
             ci.cancel();
+            return;
         }
+
+        new C2SGiveItemMessage(table.rewards.indexOf(this.weightedReward), table).sendToServer();
+
+        closeGui();
+        ci.cancel();
     }
 }

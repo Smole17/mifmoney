@@ -5,7 +5,10 @@ import dev.ftb.mods.ftblibrary.ui.Panel;
 import dev.ftb.mods.ftbquests.client.ClientQuestFile;
 import dev.ftb.mods.ftbquests.quest.Quest;
 import dev.ftb.mods.ftbquests.quest.ServerQuestFile;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
@@ -20,10 +23,10 @@ import ru.smole.mifmoney.gui.shop.button.order.OrderButton;
 @SuperBuilder
 public abstract class OrderComponent implements NBTDrawer, NetDrawer {
 
-    private int id;
-    private long price;
-    private String name;
-    private String questId;
+    protected int id;
+    protected long price;
+    protected String name;
+    protected String questId;
 
     public abstract OrderButton toButton(Panel panel, String categoryId);
 

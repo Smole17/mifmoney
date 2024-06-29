@@ -30,7 +30,6 @@ public class ItemOrderButton extends OrderButton {
 
         if (ShopScreen.EDITING_STATE) {
             new EditItemOrderScreen(this).openGui();
-            System.out.println("editing");
             return;
         }
 

@@ -29,7 +29,7 @@ public class AddItemOrderButton extends Button {
         val itemOrderComponent = ItemOrderComponent.builder()
                 .id(categoryComponent.getOrderComponents().size())
                 .itemStack(Items.DIRT.getDefaultStack())
-                .name("Call me :C")
+                .name("")
                 .rewardTableId("")
                 .questId("")
                 .price(100)
