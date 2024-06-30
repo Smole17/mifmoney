@@ -4,9 +4,6 @@
   "package": "ru.smole.mifmoney.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "gui.ChoiceRewardButtonMixin",
-    "gui.SelectChoiceRewardScreenMixin",
-    "gui.SelectChoiceRewardScreenAccessor",
     "gui.quests.ChapterPanelMixin",
     "gui.quests.OtherButtonsPanelTopMixin"
   ],

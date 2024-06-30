@@ -98,13 +98,12 @@ public class ItemOrderComponent extends OrderComponent {
         val currentRewardTableId = isBulk ? bulkRewardTableId : rewardTableId;
         val rewardTable = getRewardTable(currentRewardTableId, false);
 
-        currencyComponent.modify(-modifiedPrice);
-
         if (rewardTable == null) {
             ItemStackHooks.giveItem(player, itemStack.kjs$withCount(itemStack.getCount() * modifier));
+            currencyComponent.modify(-modifiedPrice);
             return;
         }
 
-        new S2CBuyItemResponseMessage(currentRewardTableId).sendTo(player);
+        new S2CBuyItemResponseMessage(currentRewardTableId, modifiedPrice).sendTo(player);
     }
 }

@@ -11,7 +11,7 @@ public interface MIFMoneyCommonNetwork {
 
     SimpleNetworkManager NET = SimpleNetworkManager.create(MIFMoney.MOD_ID);
     MessageType BUY_ITEM = NET.registerC2S("buy_item", C2SBuyItemMessage::new);
-    MessageType GIVE_ITEM = NET.registerC2S("give_item", C2SGiveItemMessage::new);
+    MessageType BUY_REWARD = NET.registerC2S("buy_reward", C2SBuyRewardMessage::new);
     MessageType CREATE_CATEGORY_COMPONENT = NET.registerC2S("create_category_component", C2SCreateCategoryMessage::new);
     MessageType CREATE_ITEM_ORDER_COMPONENT = NET.registerC2S("create_item_order_component", C2SCreateItemOrderMessage::new);
     MessageType EDIT_CATEGORY_COMPONENT = NET.registerC2S("edit_category_component", C2SEditCategoryMessage::new);

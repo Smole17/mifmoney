@@ -24,10 +24,6 @@ public class ShopScreen extends BaseScreen {
     private final CategoryPanel categoryPanel = new CategoryPanel(this);
     private CategoryButton currentCategoryButton;
 
-    public ShopScreen() {
-        setFullscreen();
-    }
-
     @Override
     public void addWidgets() {
         add(categoryPanel);
@@ -47,13 +43,18 @@ public class ShopScreen extends BaseScreen {
 
         val mifMoneyBalanceText = Text.translatable("mifmoney.balance");
 
-        theme.drawString(matrixStack, mifMoneyBalanceText, x + (width - theme.getStringWidth(mifMoneyBalanceText)) - 52, y - 10, Theme.SHADOW);
+        theme.drawString(matrixStack, mifMoneyBalanceText, x + (width - theme.getStringWidth(mifMoneyBalanceText)) - 54, y - 10, Theme.SHADOW);
 
         if (currentCategoryButton == null) return;
 
         val categoryName = currentCategoryButton.getComponent().getName();
 
         theme.drawString(matrixStack, categoryName, x + (width - theme.getStringWidth(categoryName)) - 100, y - 10, Theme.SHADOW);
+    }
+
+    @Override
+    public void onBack() {
+        closeGui(false);
     }
 
     @Override

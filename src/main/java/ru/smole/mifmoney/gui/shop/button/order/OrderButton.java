@@ -45,7 +45,7 @@ public class OrderButton extends Button {
 
         theme.drawString(matrixStack, getTitle(), x + 5, y + 2, Theme.SHADOW);
 
-        FormatUtil.drawFormattedMoney(component.getPrice(), matrixStack, x + 80, y + 7, w - 80, h - 12, 16);
+        FormatUtil.drawFormattedMoney(component.getPrice(), matrixStack, x + 70, y + 7, w - 80, h - 12, 16);
 
         icon.draw(matrixStack, x - 15, y + 10, w - 80, h - 12);
     }

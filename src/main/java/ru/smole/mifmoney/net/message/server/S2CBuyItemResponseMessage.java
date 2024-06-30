@@ -3,22 +3,21 @@ package ru.smole.mifmoney.net.message.server;
 import dev.architectury.networking.NetworkManager;
 import dev.architectury.networking.simple.BaseS2CMessage;
 import dev.architectury.networking.simple.MessageType;
-import dev.ftb.mods.ftbquests.gui.SelectChoiceRewardScreen;
-import dev.ftb.mods.ftbquests.quest.loot.RewardTable;
-import dev.ftb.mods.ftbquests.quest.reward.ChoiceReward;
 import lombok.RequiredArgsConstructor;
-import lombok.val;
 import net.minecraft.network.PacketByteBuf;
 import ru.smole.mifmoney.component.order.item.ItemOrderComponent;
+import ru.smole.mifmoney.gui.reward.SelectRewardScreen;
 import ru.smole.mifmoney.net.MIFMoneyCommonNetwork;
 
 @RequiredArgsConstructor
 public class S2CBuyItemResponseMessage extends BaseS2CMessage {
 
     private final String rewardTableId;
+    private final long price;
 
     public S2CBuyItemResponseMessage(PacketByteBuf buf) {
         this.rewardTableId = buf.readString();
+        this.price = buf.readLong();
     }
 
     @Override
@@ -29,18 +28,11 @@ public class S2CBuyItemResponseMessage extends BaseS2CMessage {
     @Override
     public void write(PacketByteBuf buf) {
         buf.writeString(rewardTableId);
+        buf.writeLong(price);
     }
 
     @Override
     public void handle(NetworkManager.PacketContext context) {
-        val choiceReward = new ChoiceReward(null) {
-            @Override
-            public RewardTable getTable() {
-                return ItemOrderComponent.getRewardTable(rewardTableId, true);
-            }
-        };
-        choiceReward.id = -1;
-
-        new SelectChoiceRewardScreen(choiceReward).openGui();
+        new SelectRewardScreen(ItemOrderComponent.getRewardTable(rewardTableId, true), price).openGui();
     }
 }
