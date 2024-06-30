@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.network.PacketByteBuf;
+import org.jetbrains.annotations.NotNull;
 import ru.smole.mifmoney.component.NBTDrawer;
 import ru.smole.mifmoney.component.NetDrawer;
 import ru.smole.mifmoney.component.order.OrderComponent;
@@ -27,12 +28,13 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CategoryComponent implements NBTDrawer, NetDrawer {
+public class CategoryComponent implements NBTDrawer, NetDrawer, Comparable<CategoryComponent> {
 
     private String id = UUID.randomUUID().toString();
     private String name = id;
     private ItemStack itemStack;
     private List<OrderComponent> orderComponents;
+    private int renderPriority;
 
     @Override
     public void writeData(NbtCompound compound) {
@@ -50,6 +52,7 @@ public class CategoryComponent implements NBTDrawer, NetDrawer {
         });
 
         compound.put("orders", orderList);
+        compound.putInt("render_priority", renderPriority);
     }
 
     @Override
@@ -68,6 +71,7 @@ public class CategoryComponent implements NBTDrawer, NetDrawer {
 
             orderComponents.add(itemOrderComponent);
         });
+        renderPriority = compound.getInt("render_priority");
     }
 
     @Override
@@ -76,6 +80,7 @@ public class CategoryComponent implements NBTDrawer, NetDrawer {
         buf.writeString(name);
         buf.writeItemStack(itemStack);
         NetUtils.write(buf, orderComponents, (buf1, itemOrderComponent) -> itemOrderComponent.writeNet(buf1));
+        buf.writeInt(renderPriority);
     }
 
     @Override
@@ -92,6 +97,7 @@ public class CategoryComponent implements NBTDrawer, NetDrawer {
 
             return itemOrderComponent;
         });
+        renderPriority = buf.readInt();
     }
 
     @Override
@@ -99,11 +105,17 @@ public class CategoryComponent implements NBTDrawer, NetDrawer {
         return obj instanceof CategoryComponent && Objects.equals(id, ((CategoryComponent) obj).id);
     }
 
+    @Override
+    public int compareTo(@NotNull CategoryComponent o) {
+        return Integer.compare(renderPriority, o.renderPriority);
+    }
+
     public void update(CategoryComponent categoryComponent) {
         id = categoryComponent.getId();
         name = categoryComponent.getName();
         itemStack = categoryComponent.getItemStack();
         orderComponents = categoryComponent.getOrderComponents();
+        renderPriority = categoryComponent.getRenderPriority();
     }
 
     public Icon getIcon() {

@@ -64,8 +64,7 @@ public class EditItemOrderScreen extends BaseScreen {
             val mainPanel = new BlankPanel(this) {
                 @Override
                 public void addWidgets() {
-                    val componentPanel = new BlankPanel(this) {
-
+                    val externalPanel = new BlankPanel(this) {
                         @Override
                         public void addWidgets() {
                             val iconButton = new SimpleButton(this, Text.translatable("mifmoney.pick_item"), orderButton.getIcon(), (simpleButton, mouseButton) -> {
@@ -106,7 +105,7 @@ public class EditItemOrderScreen extends BaseScreen {
                         }
                     };
 
-                    add(componentPanel);
+                    add(externalPanel);
 
                     val priceBoxId = new TextBox(this) {
                         @Override

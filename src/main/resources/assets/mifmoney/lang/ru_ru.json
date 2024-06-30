@@ -9,5 +9,6 @@
   "mifmoney.add_category": "Добавить категорию",
   "mifmoney.save_button": "Сохранить",
   "mifmoney.delete_button": "Удалить",
-  "mifmoney.balance": "Баланс:"
+  "mifmoney.balance": "Баланс:",
+  "mifmoney.search.enter_order_name": "Введите название предмета"
 }

@@ -7,6 +7,7 @@ import lombok.val;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
 import ru.smole.mifmoney.component.category.CategoryComponent;
+import ru.smole.mifmoney.component.order.item.ItemOrderComponent;
 import ru.smole.mifmoney.gui.shop.button.edit.add.AddItemOrderButton;
 import ru.smole.mifmoney.gui.shop.screen.ShopScreen;
 
@@ -14,12 +15,14 @@ import ru.smole.mifmoney.gui.shop.screen.ShopScreen;
 public class OrderPanel extends Panel {
 
     private final CategoryComponent categoryComponent;
+    private final String orderFilterName;
     private ScrollBar scrollBar;
     private Panel panel;
 
-    public OrderPanel(Panel panel, CategoryComponent categoryComponent) {
+    public OrderPanel(Panel panel, CategoryComponent categoryComponent, String orderFilterName) {
         super(panel);
         this.categoryComponent = categoryComponent;
+        this.orderFilterName = orderFilterName;
     }
 
     @Override
@@ -30,6 +33,8 @@ public class OrderPanel extends Panel {
                 addAll(categoryComponent
                         .getOrderComponents()
                         .stream()
+                        .map(orderComponent -> (ItemOrderComponent) orderComponent) // there is no ways to have another components, lol
+                        .filter(orderComponent -> orderComponent.getTextName().getString().toLowerCase().contains(orderFilterName))
                         .map(component -> component.toButton(this, categoryComponent.getId()))
                         .filter(button -> {
                                     val quest = button.getComponent().getQuest();
@@ -73,7 +78,7 @@ public class OrderPanel extends Panel {
     @Override
     public void alignWidgets() {
         align(WidgetLayout.HORIZONTAL);
-        setPosAndSize(5, 5, 250, 155);
+        setPosAndSize(5, 15, 250, 155);
     }
 
     @Override

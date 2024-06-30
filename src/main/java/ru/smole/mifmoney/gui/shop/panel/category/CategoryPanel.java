@@ -8,6 +8,7 @@ import lombok.Setter;
 import lombok.val;
 import net.minecraft.client.MinecraftClient;
 import ru.smole.mifmoney.MIFMoney;
+import ru.smole.mifmoney.component.category.CategoryComponent;
 import ru.smole.mifmoney.gui.shop.button.category.CategoryButton;
 import ru.smole.mifmoney.gui.shop.button.edit.EditToggleButton;
 import ru.smole.mifmoney.gui.shop.button.edit.add.AddCategoryButton;
@@ -29,6 +30,7 @@ public class CategoryPanel extends Panel {
                 .getClientShopFile()
                 .getCategories()
                 .stream()
+                .sorted(CategoryComponent::compareTo)
                 .map(categoryComponent -> categoryComponent.toButton(this))
                 .toList());
 
