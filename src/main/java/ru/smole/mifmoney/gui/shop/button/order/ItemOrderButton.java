@@ -33,7 +33,7 @@ public class ItemOrderButton extends OrderButton {
             return;
         }
 
-        new C2SBuyItemMessage(mouseButton.isRight(), component).sendToServer();
+        new C2SBuyItemMessage(ShopScreen.isCtrlKeyDown(), component).sendToServer();
     }
 
     @Override

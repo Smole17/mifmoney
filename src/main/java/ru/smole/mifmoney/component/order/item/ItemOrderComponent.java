@@ -16,7 +16,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import ru.smole.mifmoney.component.order.OrderComponent;
 import ru.smole.mifmoney.gui.shop.button.order.ItemOrderButton;
 import ru.smole.mifmoney.gui.shop.button.order.OrderButton;
-import ru.smole.mifmoney.net.message.server.S2CBuyItemResponseMessage;
+import ru.smole.mifmoney.net.message.server.S2CBuyRewardResponseMessage;
 
 @Getter
 @Setter
@@ -88,22 +88,23 @@ public class ItemOrderComponent extends OrderComponent {
     }
 
     public void give(boolean isBulk, ServerPlayerEntity player) {
-        val modifier = isBulk ? 10 : 1;
+        val price = getPrice() * (isBulk ? 10 : 1);
 
         val currencyComponent = ModComponents.CURRENCY.get(player);
 
-        val modifiedPrice = getPrice() * modifier;
-        if (currencyComponent.getValue() < modifiedPrice) return;
+        if (currencyComponent.getValue() < price) return;
+
+        if (isBulk && rewardTableId != null && bulkRewardTableId == null) return;
 
         val currentRewardTableId = isBulk ? bulkRewardTableId : rewardTableId;
         val rewardTable = getRewardTable(currentRewardTableId, false);
 
         if (rewardTable == null) {
-            ItemStackHooks.giveItem(player, itemStack.kjs$withCount(itemStack.getCount() * modifier));
-            currencyComponent.modify(-modifiedPrice);
+            ItemStackHooks.giveItem(player, itemStack.kjs$withCount(itemStack.getCount() * (isBulk ? 10 : 1)));
+            currencyComponent.modify(-price);
             return;
         }
 
-        new S2CBuyItemResponseMessage(currentRewardTableId, modifiedPrice).sendTo(player);
+        new S2CBuyRewardResponseMessage(currentRewardTableId, price).sendTo(player);
     }
 }

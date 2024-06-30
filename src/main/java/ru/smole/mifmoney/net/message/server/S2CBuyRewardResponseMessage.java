@@ -10,19 +10,19 @@ import ru.smole.mifmoney.gui.reward.SelectRewardScreen;
 import ru.smole.mifmoney.net.MIFMoneyCommonNetwork;
 
 @RequiredArgsConstructor
-public class S2CBuyItemResponseMessage extends BaseS2CMessage {
+public class S2CBuyRewardResponseMessage extends BaseS2CMessage {
 
     private final String rewardTableId;
     private final long price;
 
-    public S2CBuyItemResponseMessage(PacketByteBuf buf) {
+    public S2CBuyRewardResponseMessage(PacketByteBuf buf) {
         this.rewardTableId = buf.readString();
         this.price = buf.readLong();
     }
 
     @Override
     public MessageType getType() {
-        return MIFMoneyCommonNetwork.BUY_ITEM_RESPONSE;
+        return MIFMoneyCommonNetwork.BUY_REWARD_RESPONSE;
     }
 
     @Override

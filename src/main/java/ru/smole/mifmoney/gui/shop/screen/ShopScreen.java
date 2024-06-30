@@ -21,8 +21,8 @@ public class ShopScreen extends BaseScreen {
 
     public static boolean EDITING_STATE = false;
 
-    private final CategoryPanel categoryPanel = new CategoryPanel(this);
     private CategoryButton currentCategoryButton;
+    private final CategoryPanel categoryPanel = new CategoryPanel(this);
 
     @Override
     public void addWidgets() {
