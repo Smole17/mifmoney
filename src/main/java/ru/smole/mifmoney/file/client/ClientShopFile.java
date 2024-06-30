@@ -15,7 +15,11 @@ public class ClientShopFile extends ShopFile {
 
     @Override
     public void load() {
-        if (shopScreen != null) shopScreen.refreshWidgets();
+        if (shopScreen != null) {
+            shopScreen.getCategoryPanel().refreshWidgets();
+            shopScreen.refreshWidgets();
+            System.out.println("Refreshed the shop screen");
+        }
         System.out.println("Successfully sync the shop");
     }
 

@@ -21,13 +21,16 @@ public class FormatUtil {
         val s = (int) (money - Currency.GOLD.getRawValue(g)) / 100;
         val b = (int) (money - (Currency.GOLD.getRawValue(g) + Currency.SILVER.getRawValue(s)));
 
-        var currentRange = range;
+        var currentRange = range * 2;
 
-        if (g > 0) CustomIconItem.getIcon(new ItemStack(Currency.GOLD, g)).draw(matrixStack, x, y, w, h);
+        if (b > 0) {
+            CustomIconItem.getIcon(new ItemStack(Currency.BRONZE, b)).draw(matrixStack, x + currentRange, y, w, h);
+            if (s > 0) currentRange -= range;
+        }
         if (s > 0) {
             CustomIconItem.getIcon(new ItemStack(Currency.SILVER, s)).draw(matrixStack, x + currentRange, y, w, h);
-            currentRange += range;
+            if (g > 0) currentRange -= range;
         }
-        if (b > 0) CustomIconItem.getIcon(new ItemStack(Currency.BRONZE, b)).draw(matrixStack, x + currentRange, y, w, h);
+        if (g > 0) CustomIconItem.getIcon(new ItemStack(Currency.GOLD, g)).draw(matrixStack, x + currentRange, y, w, h);
     }
 }

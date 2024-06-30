@@ -5,7 +5,6 @@ import dev.ftb.mods.ftblibrary.ui.input.MouseButton;
 import dev.ftb.mods.ftbquests.item.CustomIconItem;
 import lombok.Getter;
 import lombok.Setter;
-import net.minecraft.text.Text;
 import ru.smole.mifmoney.component.order.item.ItemOrderComponent;
 import ru.smole.mifmoney.gui.shop.screen.ShopScreen;
 import ru.smole.mifmoney.gui.shop.screen.edit.EditItemOrderScreen;
@@ -18,7 +17,7 @@ public class ItemOrderButton extends OrderButton {
     private ItemOrderComponent component;
 
     public ItemOrderButton(Panel panel, String categoryId, ItemOrderComponent component) {
-        super(panel, Text.of(component.getName()), CustomIconItem.getIcon(component.getItemStack()), categoryId, component);
+        super(panel, component.getTextName(), CustomIconItem.getIcon(component.getItemStack()), categoryId, component);
         this.component = component;
 
         setSize(155, 30);
@@ -28,17 +27,17 @@ public class ItemOrderButton extends OrderButton {
     public void onClicked(MouseButton mouseButton) {
         playClickSound();
 
-        if (ShopScreen.EDITING_STATE) {
+        if (ShopScreen.EDITING_STATE && mouseButton.isRight()) {
             new EditItemOrderScreen(this).openGui();
             return;
         }
 
-        new C2SBuyItemMessage(ShopScreen.isCtrlKeyDown(), component).sendToServer();
+        new C2SBuyItemMessage(isCtrlKeyDown(), component).sendToServer();
     }
 
     @Override
     public void update() {
-        setTitle(Text.of(component.getName()));
+        setTitle(component.getTextName());
         setIcon(CustomIconItem.getIcon(component.getItemStack()));
     }
 }

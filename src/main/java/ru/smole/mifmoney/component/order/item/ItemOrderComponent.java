@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.text.Text;
 import ru.smole.mifmoney.component.order.OrderComponent;
 import ru.smole.mifmoney.gui.shop.button.order.ItemOrderButton;
 import ru.smole.mifmoney.gui.shop.button.order.OrderButton;
@@ -82,9 +83,8 @@ public class ItemOrderComponent extends OrderComponent {
         this.bulkRewardTableId = itemOrderComponent.bulkRewardTableId;
     }
 
-    @Override
-    public String getName() {
-        return name == null || name.isEmpty() ? itemStack.getName().getString() : super.getName();
+    public Text getTextName() {
+        return name == null || name.isEmpty() ? itemStack.getName() : Text.of(getName());
     }
 
     public void give(boolean isBulk, ServerPlayerEntity player) {
@@ -94,7 +94,7 @@ public class ItemOrderComponent extends OrderComponent {
 
         if (currencyComponent.getValue() < price) return;
 
-        if (isBulk && rewardTableId != null && bulkRewardTableId == null) return;
+        if (isBulk && (rewardTableId != null && !rewardTableId.isEmpty()) && (bulkRewardTableId == null || bulkRewardTableId.isEmpty())) return;
 
         val currentRewardTableId = isBulk ? bulkRewardTableId : rewardTableId;
         val rewardTable = getRewardTable(currentRewardTableId, false);

@@ -19,7 +19,7 @@ import ru.smole.mifmoney.util.FormatUtil;
 @Setter
 public class ShopScreen extends BaseScreen {
 
-    public static boolean EDITING_STATE = false;
+    public static boolean EDITING_STATE;
 
     private CategoryButton currentCategoryButton;
     private final CategoryPanel categoryPanel = new CategoryPanel(this);
@@ -50,11 +50,6 @@ public class ShopScreen extends BaseScreen {
         val categoryName = currentCategoryButton.getComponent().getName();
 
         theme.drawString(matrixStack, categoryName, x + (width - theme.getStringWidth(categoryName)) - 100, y - 10, Theme.SHADOW);
-    }
-
-    @Override
-    public void onBack() {
-        closeGui(false);
     }
 
     @Override

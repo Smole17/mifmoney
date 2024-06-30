@@ -28,7 +28,7 @@ public class CategoryButton extends Button {
     public void onClicked(MouseButton mouseButton) {
         playClickSound();
 
-        if (ShopScreen.EDITING_STATE) {
+        if (ShopScreen.EDITING_STATE && mouseButton.isRight()) {
             new EditCategoryScreen(this).openGui();
             return;
         }
