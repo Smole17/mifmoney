@@ -73,7 +73,7 @@ public class ShopScreen extends BaseScreen {
     private void drawBalance(MatrixStack matrixStack, Theme theme, int x, int y) {
         val currency = ModComponents.CURRENCY.get(MinecraftClient.getInstance().player).getValue();
 
-        FormatUtil.drawFormattedMoney(currency, matrixStack, x + 50, y + 169, 16, 16, 16);
+        FormatUtil.drawFormattedMoney(currency, matrixStack, x + 50, y + 169, 16, 16, 16, true);
 
         val mifMoneyBalanceText = Text.translatable("mifmoney.balance");
 
