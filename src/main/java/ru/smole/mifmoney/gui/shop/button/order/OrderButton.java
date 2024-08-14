@@ -46,8 +46,8 @@ public class OrderButton extends Button {
         theme.drawString(matrixStack, getTitle(), x + 5, y + 2, Theme.SHADOW);
 
         FormatUtil.drawFormattedMoney(component.getPrice() * (isCtrlKeyDown() ? 10 : 1), matrixStack, x + 102, y + 7, w - 80, h - 12, 16, false);
-
-        icon.draw(matrixStack, x - 15, y + 10, w - 80, h - 12);
+        
+        drawIcon(matrixStack, theme, x, y, w, h);
     }
 
     @Override
