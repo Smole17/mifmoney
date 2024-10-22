@@ -5,8 +5,10 @@ import dev.architectury.utils.EnvExecutor;
 import dev.ftb.mods.ftbteams.event.PlayerLoggedInAfterTeamEvent;
 import dev.ftb.mods.ftbteams.event.TeamEvent;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.world.ServerWorld;
+import ru.smole.mifmoney.command.EditModeToggleCommand;
 import ru.smole.mifmoney.file.server.ServerShopFile;
 import ru.smole.mifmoney.net.message.server.S2CSyncShopMessage;
 
@@ -34,6 +36,8 @@ public class MIFMoney implements ModInitializer {
         LifecycleEvent.SERVER_STOPPING.register(this::serverStopped);
         LifecycleEvent.SERVER_LEVEL_SAVE.register(this::worldSaved);
         TeamEvent.PLAYER_LOGGED_IN.register(this::playerLoggedIn);
+        
+        CommandRegistrationCallback.EVENT.register(EditModeToggleCommand::register);
     }
 
     private void serverAboutToStart(MinecraftServer server) {

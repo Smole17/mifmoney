@@ -1,8 +1,8 @@
 {
   "sidebar_button.mifmoney.shop": "Магазин",
   "mifmoney.click_to_buy": "Приобрести. Используйте CTRL для x10",
-  "mifmoney.editing.on": "Нажмите, чтобы выйти из режима редактора",
-  "mifmoney.editing.off": "Нажмите, чтобы перейти в режим редактора",
+  "mifmoney.editing.on": "Режима редактора включён.",
+  "mifmoney.editing.off": "Режима редактора выключен.",
   "mifmoney.pick_icon": "Выбрать иконку",
   "mifmoney.pick_item": "Выбрать предмет",
   "mifmoney.add_order": "Добавить товар",

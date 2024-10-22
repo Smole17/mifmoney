@@ -10,7 +10,6 @@ import net.minecraft.client.MinecraftClient;
 import ru.smole.mifmoney.MIFMoney;
 import ru.smole.mifmoney.component.category.CategoryComponent;
 import ru.smole.mifmoney.gui.shop.button.category.CategoryButton;
-import ru.smole.mifmoney.gui.shop.button.edit.EditToggleButton;
 import ru.smole.mifmoney.gui.shop.button.edit.add.AddCategoryButton;
 import ru.smole.mifmoney.gui.shop.screen.ShopScreen;
 
@@ -24,8 +23,6 @@ public class CategoryPanel extends Panel {
 
     @Override
     public void addWidgets() {
-        if (MinecraftClient.getInstance().player.hasPermissionLevel(2)) add(new EditToggleButton(this));
-
         addAll(MIFMoney.PROXY
                 .getClientShopFile()
                 .getCategories()

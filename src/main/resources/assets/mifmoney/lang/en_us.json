@@ -1,8 +1,8 @@
 {
   "sidebar_button.mifmoney.shop": "Shop",
   "mifmoney.click_to_buy": "Purchase. Use CTRL to x10",
-  "mifmoney.editing.on": "Click to turning off editing mode",
-  "mifmoney.editing.off": "Click to turning on editing mode",
+  "mifmoney.editing.on": "Editing mode was enabled",
+  "mifmoney.editing.off": "Editing mode was disabled.",
   "mifmoney.pick_icon": "Pick icon",
   "mifmoney.pick_item": "Pick item",
   "mifmoney.add_order": "Add order",
